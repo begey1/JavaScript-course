@@ -1,9 +1,7 @@
-console.log("Використання: triangle(v1, t1, v2, t2");
+console.log("Використання: triangle(v1, t1, v2, t2)");
 console.log("Типи:");
 console.log("'leg' - катет");
 console.log("'hypotenuse' - гіпотенуза");
-console.log("'adjacent angle' - прилеглий до катета кут");
-console.log("'opposite angle' - протилежний до катета кут");
 console.log("'angle' - гострий кут (коли задана гіпотенуза)");
 
 function triangle(v1, t1, v2, t2){
