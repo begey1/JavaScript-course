@@ -2,80 +2,63 @@ console.log("Використання: triangle(v1, t1, v2, t2)");
 console.log("Типи:");
 console.log("'leg' - катет");
 console.log("'hypotenuse' - гіпотенуза");
+console.log("'adjacent angle' - прилеглий до катета кут");
+console.log("'opposite angle' - протилежний до катета кут");
 console.log("'angle' - гострий кут (коли задана гіпотенуза)");
 
-function triangle(v1, t1, v2, t2){
+function triangle(v1, t1, v2, t2) {
 
-  if (v1 <= 0 || v2 <= 0) {
-      console.log("значення повинні бути додатні");
-      return "failed";
-  }
+    const allowed = ["leg", "hypotenuse", "adjacent angle", "opposite angle", "angle"];
 
-  const toRad = deg => deg * Math.PI / 180; 
-  const toDeg = rad => rad * 180 / Math.PI;
+    if (!allowed.includes(t1) || !allowed.includes(t2)) {
+        console.log("не добре. перечитайте як правильно");
+        return "failed";
+    }
 
-  let a = 0; 
-  let b = 0; 
-  let c = 0;    // сторрони трикутника    
-  let alpha = 0; 
-  let beta = 0;   // гострі кути
+    if (v1 <= 0 || v2 <= 0) {
+        console.log("значення повинні бути додатні");
+        return "failed";
+    }
 
-    
-  if (t1 === "leg" && t2 === "leg") {
+    const toRad = deg => deg * Math.PI / 180;
+    const toDeg = rad => rad * 180 / Math.PI;
+
+    let a = 0, b = 0, c = 0;
+    let alpha = 0, beta = 0;
+
+    // Два катети
+    if (t1 === "leg" && t2 === "leg") {
         a = v1;
         b = v2;
-        c = Math.sqrt(a * a + b * b);
-        alpha = toDeg(Math.atan(a / b));
+        c = Math.sqrt(a*a + b*b);
+        alpha = toDeg(Math.atan2(a, b));
         beta = 90 - alpha;
     }
 
-
-  else if ((t1 === "leg" && t2 === "hypotenuse") || (t2 === "leg" && t1 === "hypotenuse"))
-     {
-       // шукаємо катет
-      if (t1 === "leg") {
-        a = v1;
-      } else { 
-        a = v2;
-      }
-
-      // шукаємо гіпотенузу
-
-      if (t1 === "hypotenuse") {
-        c = v1;
-      } else {
-        c = v2;
-      }
+    // Катет + гіпотенуза
+    else if ((t1 === "leg" && t2 === "hypotenuse") || (t1 === "hypotenuse" && t2 === "leg")) {
+        if (t1 === "leg") {
+            a = v1; c = v2;
+        } else {
+            a = v2; c = v1;
+        }
 
         if (a >= c) {
             console.log("катет не може бути більшим або рівним гіпотенузі");
             return "failed";
         }
 
-        b = Math.sqrt(c * c - a * a);
+        b = Math.sqrt(c*c - a*a);
         alpha = toDeg(Math.asin(a / c));
         beta = 90 - alpha;
     }
 
+    // Гіпотенуза + гострий кут
+    else if ((t1 === "hypotenuse" && t2 === "angle") || (t1 === "angle" && t2 === "hypotenuse")) {
+        if (t1 === "hypotenuse") { c = v1; alpha = v2; }
+        else { c = v2; alpha = v1; }
 
-  else if ((t1 === "hypotenuse" && t2 === "angle") || (t1 === "angle" && t2 === "hypotenuse")) {
-
-        // шукаємо гіпотенузу
-        if (t1 === "hypotenuse") {
-            c = v1;
-        } else {
-            c = v2;
-        }
-
-        // шукаємо гострий кут
-        if (t1 === "angle") {
-            alpha = v1;
-        } else {
-            alpha = v2;
-        }
-
-        // перевірка гострого кута
-        if (alpha >= 90) {
+        if (alpha <= 0 || alpha >= 90) {
             console.log("кут повинен бути гострим");
             return "failed";
         }
@@ -83,7 +66,8 @@ function triangle(v1, t1, v2, t2){
         a = c * Math.sin(toRad(alpha));
         b = c * Math.cos(toRad(alpha));
         beta = 90 - alpha;
-  }
+    }
+
     else {
         console.log("ця комбінація типів не підтримується");
         return "failed";
@@ -95,5 +79,5 @@ function triangle(v1, t1, v2, t2){
     console.log("alpha =", alpha.toFixed(2));
     console.log("beta =", beta.toFixed(2));
 
-    return "success"; 
-    }
+    return "success";
+}
