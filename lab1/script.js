@@ -4,9 +4,9 @@ console.log("'leg' - катет");
 console.log("'hypotenuse' - гіпотенуза");
 console.log("'adjacent angle' - прилеглий до катета кут");
 console.log("'opposite angle' - протилежний до катета кут");
-consolw.log("'agle' - гострий кут (коли задана гіпотенуза)");
+console.log("'angle' - гострий кут (коли задана гіпотенуза)");
 
-function triangle(v1, t1, v2, t2);
+function triangle(v1, t1, v2, t2){
 
   if (v1 <= 0 || v2 <= 0) {
       console.log("значення повинні бути додатні");
@@ -32,14 +32,13 @@ function triangle(v1, t1, v2, t2);
     }
 
 
-  else if (
-        (t1 === "leg" && t2 === "hypotenuse") || (t2 === "leg" && t1 === "hypotenuse")
-    ) {
+  else if ((t1 === "leg" && t2 === "hypotenuse") || (t2 === "leg" && t1 === "hypotenuse"))
+     {
        // шукаємо катет
       if (t1 === "leg") {
         a = v1;
       } else { 
-        a = v1;
+        a = v2;
       }
 
       // шукаємо гіпотенузу
@@ -86,7 +85,8 @@ function triangle(v1, t1, v2, t2);
         a = c * Math.sin(toRad(alpha));
         b = c * Math.cos(toRad(alpha));
         beta = 90 - alpha;
- else {
+  }
+    else {
         console.log("ця комбінація типів не підтримується");
         return "failed";
     }
