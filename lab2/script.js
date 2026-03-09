@@ -3,7 +3,7 @@ var car1 = new Object();
 car1.color = "blue";
 car1.maxSpeed = 200;
 
-car.driver = {
+car1.driver = {
   name: "Behey Oleh",
   category: "C",
   personalLimitations: "No driving at night"
@@ -11,7 +11,7 @@ car.driver = {
 
 car1.tuning = true;
 
-car1["number of accidents"] = 0
+car1["number of accidents"] = 0;
 
 car1.drive = function() {
   console.log("I am not driving at night");
