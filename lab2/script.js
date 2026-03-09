@@ -29,7 +29,7 @@ var car2 = {
     name: "Behey Oleh",
     category: "B",
     personalLimitations: null
-  };
+  },
 
   tuning: false,
 
