@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Clicker Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+
+<div id="menu">
+    <h1>Виберіть складність</h1>
+
+    <button onclick="startGame('easy')">Легкий</button>
+    <button onclick="startGame('medium')">Середній</button>
+    <button onclick="startGame('hard')">Складний</button>
+</div>
+
+<div id="game" class="hidden">
+    <h2>Очки: <span id="score">0</span></h2>
+    <h3>Час: <span id="time">0</span></h3>
+
+    <div id="red" class="square" onclick="clickSquare('red')"></div>
+    <div id="green" class="square" onclick="clickSquare('green')"></div>
+    <div id="blue" class="square" onclick="clickSquare('blue')"></div>
+
+    <br>
+    <button onclick="restart()">Заново</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
