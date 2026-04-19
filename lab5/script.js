@@ -1,53 +1,54 @@
 let score = 0;
-let time = 0;
+let timeLeft = 0;
+let clickTime = 0;
 let timer;
-let correctColor;
+let square = document.getElementById("square");
 
-function startGame(level) {
+function startGame() {
+    let difficulty = document.getElementById("difficulty").value;
+    let color = document.getElementById("color").value;
+
+    if (color === "") {
+        alert("Вибери колір!");
+        return;
+    }
+
     document.getElementById("menu").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
 
-    score = 0;
+    square.style.background = color;
 
-    if (level === "easy") time = 20;
-    if (level === "medium") time = 15;
-    if (level === "hard") time = 10;
+    if (difficulty === "easy") clickTime = 2;
+    if (difficulty === "normal") clickTime = 1;
+    if (difficulty === "hard") clickTime = 0.5;
 
-    document.getElementById("time").textContent = time;
-    document.getElementById("score").textContent = score;
+    moveSquare();
+}
 
-    nextRound();
+function moveSquare() {
+    let x = Math.random() * (window.innerWidth - 60);
+    let y = Math.random() * (window.innerHeight - 60);
 
+    square.style.left = x + "px";
+    square.style.top = y + "px";
+
+    timeLeft = clickTime;
+    document.getElementById("time").textContent = timeLeft;
+
+    clearInterval(timer);
     timer = setInterval(() => {
-        time--;
-        document.getElementById("time").textContent = time;
+        timeLeft -= 0.1;
+        document.getElementById("time").textContent = timeLeft.toFixed(1);
 
-        if (time <= 0) {
+        if (timeLeft <= 0) {
             clearInterval(timer);
-            alert("Гра закінчена! Очки: " + score);
+            alert("Game Over! Score: " + score);
         }
-    }, 1000);
+    }, 100);
 }
 
-function nextRound() {
-    let colors = ["red", "green", "blue"];
-    correctColor = colors[Math.floor(Math.random() * 3)];
-
-    document.querySelectorAll(".square").forEach(sq => {
-        sq.style.opacity = "0.3";
-    });
-
-    document.getElementById(correctColor).style.opacity = "1";
-}
-
-function clickSquare(color) {
-    if (color === correctColor) {
-        score++;
-        document.getElementById("score").textContent = score;
-        nextRound();
-    }
-}
-
-function restart() {
-    location.reload();
-}
+square.addEventListener("click", () => {
+    score++;
+    document.getElementById("score").textContent = score;
+    moveSquare();
+});
