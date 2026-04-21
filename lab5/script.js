@@ -18,9 +18,9 @@ function startGame() {
 
     square.style.background = color;
 
-    if (difficulty === "easy") clickTime = 2;
-    if (difficulty === "normal") clickTime = 1;
-    if (difficulty === "hard") clickTime = 0.5;
+    if (difficulty === "easy") clickTime = 5;
+    if (difficulty === "normal") clickTime = 2;
+    if (difficulty === "hard") clickTime = 1;
 
     moveSquare();
 }
