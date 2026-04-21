@@ -37,7 +37,7 @@ function moveSquare() {
 
     clearInterval(timer);
     timer = setInterval(() => {
-        timeLeft -= 0.1;
+        timeLeft -= 0.2;
         document.getElementById("time").textContent = timeLeft.toFixed(1);
 
         if (timeLeft <= 0) {
