@@ -1,1 +1,19 @@
-
+{
+  "category": "Phones",
+  "items": [
+    {
+      "id": 1,
+      "name": "iPhone 17",
+      "shortname": "iphone15",
+      "description": "Latest Apple smartphone",
+      "price": "$999"
+    },
+    {
+      "id": 2,
+      "name": "Samsung Galaxy S24",
+      "shortname": "s24",
+      "description": "Flagship Android phone",
+      "price": "$899"
+    }
+  ]
+}
