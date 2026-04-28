@@ -1,1 +1,19 @@
-
+{
+  "category": "Accessories",
+  "items": [
+    {
+      "id": 1,
+      "name": "AirPods Pro",
+      "shortname": "airpods",
+      "description": "Wireless headphones",
+      "price": "$249"
+    },
+    {
+      "id": 2,
+      "name": "USB-C Charger",
+      "shortname": "charger",
+      "description": "Fast charging adapter",
+      "price": "$30"
+    }
+  ]
+}
