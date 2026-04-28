@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 6 - Lights Out</title>
+</head>
+<body>
 
+<h1>5x5 Lights Out</h1>
+
+<button onclick="startGame()">New Game</button>
+
+<p>
+    Target: 7 |
+    Moves: <span id="moves">0</span>
+</p>
+
+<div id="grid"></div>
+
+<script>
+
+let moves = 0;
+
+let grid = [
+    [0,1,0,0,1],
+    [1,0,1,1,1],
+    [1,0,1,0,1],
+    [0,0,1,0,0],
+    [1,1,1,1,1]
+];
+
+function renderGrid() {
+    let container = document.getElementById("grid");
+    container.innerHTML = "";
+
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+
+            let cell = document.createElement("button");
+
+            cell.style.width = "60px";
+            cell.style.height = "60px";
+            cell.style.margin = "2px";
+            cell.style.border = "1px solid black";
+
+            if (grid[i][j] === 1) {
+                cell.style.backgroundColor = "white";
+            } else {
+                cell.style.backgroundColor = "gray";
+            }
+
+            cell.onclick = function () {
+                clickCell(i, j);
+            };
+
+            container.appendChild(cell);
+        }
+
+        container.appendChild(document.createElement("br"));
+    }
+}
+
+function toggle(i, j) {
+    if (i >= 0 && i < 5 && j >= 0 && j < 5) {
+        grid[i][j] = grid[i][j] === 1 ? 0 : 1;
+    }
+}
+
+function clickCell(i, j) {
+    toggle(i, j);     // сама клітинка
+    toggle(i-1, j);   // верх
+    toggle(i+1, j);   // низ
+    toggle(i, j-1);   // ліво
+    toggle(i, j+1);   // право
+
+    moves++;
+    document.getElementById("moves").textContent = moves;
+
+    renderGrid();
+    checkWin();
+}
+
+function checkWin() {
+    let win = true;
+
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            if (grid[i][j] === 1) {
+                win = false;
+            }
+        }
+    }
+
+    if (win) {
+        alert("Перемога! Кількість ходів: " + moves);
+    }
+}
+
+function startGame() {
+    moves = 0;
+
+    document.getElementById("moves").textContent = moves;
+
+    grid = [
+        [0,1,0,0,1],
+        [1,0,1,1,1],
+        [1,0,1,0,1],
+        [0,0,1,0,0],
+        [1,1,1,1,1]
+    ];
+
+    renderGrid();
+}
+
+startGame();
+
+</script>
+
+</body>
+</html>
