@@ -1,1 +1,19 @@
-
+{
+  "category": "Laptops",
+  "items": [
+    {
+      "id": 1,
+      "name": "MacBook Air M2",
+      "shortname": "mba_m2",
+      "description": "Lightweight Apple laptop",
+      "price": "$1200"
+    },
+    {
+      "id": 2,
+      "name": "Dell XPS 13",
+      "shortname": "xps13",
+      "description": "Premium Windows laptop",
+      "price": "$1100"
+    }
+  ]
+}
