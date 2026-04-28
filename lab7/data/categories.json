@@ -1,1 +1,26 @@
-
+[
+  {
+    "id": 1,
+    "name": "Phones",
+    "shortname": "phones",
+    "notes": "Smartphones and mobile devices"
+  },
+  {
+    "id": 2,
+    "name": "Laptops",
+    "shortname": "laptops",
+    "notes": "Portable computers"
+  },
+  {
+    "id": 3,
+    "name": "Tablets",
+    "shortname": "tablets",
+    "notes": "Touchscreen devices"
+  },
+  {
+    "id": 4,
+    "name": "Accessories",
+    "shortname": "accessories",
+    "notes": "Chargers, headphones, etc."
+  }
+]
