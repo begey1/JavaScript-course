@@ -4,16 +4,16 @@
     {
       "id": 1,
       "name": "iPhone 17",
-      "shortname": "iphone15",
+      "shortname": "iphone17",
       "description": "Latest Apple smartphone",
-      "price": "$999"
+      "price": "46 799 ₴"
     },
     {
       "id": 2,
       "name": "Samsung Galaxy S24",
       "shortname": "s24",
       "description": "Flagship Android phone",
-      "price": "$899"
+      "price": "34 999 ₴"
     }
   ]
 }
