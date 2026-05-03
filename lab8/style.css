@@ -1,1 +1,109 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: white;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.burger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    transition: 0.5s;
+}
+
+.slides img {
+    width: 100%;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.dots {
+    text-align: center;
+}
+
+.dots span {
+    height: 10px;
+    width: 10px;
+    margin: 5px;
+    display: inline-block;
+    background: gray;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.large-only {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.medium-only {
+    display: none;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+        background: #444;
+    }
+
+    nav.active {
+        display: flex;
+        animation: slideDown 0.5s;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .large-only {
+        display: none;
+    }
+
+    .medium-only {
+        display: block;
+    }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
