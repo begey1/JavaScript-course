@@ -6,14 +6,14 @@
       "name": "iPad Air",
       "shortname": "ipadair",
       "description": "Apple tablet for work and study",
-      "price": "$700"
+      "price": "34 499 ₴"
     },
     {
       "id": 2,
-      "name": "Samsung Tab S9",
-      "shortname": "tabs9",
+      "name": "Samsung Tab S11",
+      "shortname": "tabs11",
       "description": "Android premium tablet",
-      "price": "$650"
+      "price": "26 499 ₴"
     }
   ]
 }
